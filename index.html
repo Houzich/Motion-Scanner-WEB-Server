@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My Paint</title>
+
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+
+        <!-- ############################################################################################## -->
+        <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+        <script type="text/javascript" src="js/paint.js"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/object_list.js"></script>
+        <script type="text/javascript" src="js/alarm_zones.js"></script>
+        <script type="text/javascript" src="js/polygon.js"></script>
+        <script type="text/javascript" src="js/grid.js"></script>
+        <script type="text/javascript" src="js/scale_img.js"></script>
+        <script type="text/javascript" src="js/scale.js"></script>
+        <script type="text/javascript" src="js/alarm_list_history.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
+        <script type="text/javascript" src="js/db_object.js"></script>
+        <script type="text/javascript" src="js/page_state.js"></script>
+        <script type="text/javascript" src="js/button.js"></script>
+    </head>
+
+
+    <body>
+
+    <table class="tblWind">
+        <!--<table>-->
+        <tr><td rowspan="2" style="display: inline-block;">
+                <!-- ############################################################################################## -->
+            <div id="Paint_second"><canvas id = "c2" width = "700" height = "525" ></canvas></div>
+                <div class="image_drop">
+                    <table class="scale_tabl">
+                        <tr><td colspan="2">
+                            <div class="file_upload">
+                                <button type="button" id="file_upp" class="button" style="margin: 0px;">Load Image</button>
+                                <input type="file" id="id_Upload_Image" />
+                            </div>
+                        </td></tr>
+                        <tr><td><button type = "button" id = "id_Scale_Image" class="button" disabled style="width: 100%; margin: 0px;" >Scale</button></td>
+                            <td><button type = "button" id = "id_Save_Image" class="button" disabled style="width: 100%; margin: 0px;" >Save Image</button></td></tr>
+                    </table>
+                </div>
+
+            <div id = "id_Drop_Scale" class="scale_drop hidden">
+                <table class="scale_tabl">
+                    <tr><td colspan="2"><button type = "button" id = "id_Scale_Line" class="button" style="width: 100%; margin: 0px;">Line</button></td></tr>
+                    <tr><td><input type="number"  step="0.1" id = "id_Scale_Distance_Inpt" value = "0.0"  class="scale_cell" /></td>
+                        <td><button type = "button" id = "id_Scale_Distance" class="button" style="width: 100%; margin: 0px;">Scale Distance</button></td></tr>
+                </table>
+            </div>
+
+
+            <table class="canv_tabl"><tr><td>
+                <div id="id_Canv_Grid_Left_Div"><canvas id = "id_Canv_Grid_Left_Canv" width = "35" height = "525" class="canv_grid"></canvas></div>
+                <td class="bottom">
+                <div id="Paint_first"><canvas id = "c" width = "700" height = "525" ></canvas></div>
+                <tr><td><td>
+                <div id="id_Canv_Grid_Bottom_Div"><canvas id = "id_Canv_Grid_Bottom_Canv" width = "700" height = "30" class="canv_grid"></canvas></div>
+            </table>
+
+            <div style="display:none">
+                <label> X:  </label><input type="number"  step="10" id = "id_Test_Point_X_Inpt" value = "350"  class="scale_cell" />
+                <label> Scale:  </label><input type="number"  step="0.1" id = "id_Test_Scale_X_Inpt" value = "1.0"  class="scale_cell" />
+                <button type = "button" id = "id_Test_Point_X_Butt" class="scale_cell">Point X</button>
+            </div>
+
+            <!-- ############################################################################################## -->
+            <td style="display: inline-block; vertical-align: middle;">
+                <!-- ############################################################################################## -->
+                <div class="wind_alarm_zones" style="width:300px">
+                    <div id="Title_Alarm_Zones_Div" ></div>
+                    <div id="Box_Alarm_Zones_Div" class="tzSelect">
+                    </div>
+
+                    <button type = "button" id = "id_Creat_Alarm_Zone"  value = "Add New" class="button" style="width: 30%" >Add New</button>
+                    <input  type = "button" id = "id_Modify_Alarm_Zone" value = "Modify"  class="button" style="width: 30%" />
+                    <input  type = "button" id = "id_Delete_Alarm_Zone" value = "Delete"  class="button" style="width: 30%" />
+                </div>
+
+            <div class="wind_wait_url hidden" id='id_Wait_URL_Wind'>
+                WAIT VERIFIED URL
+            </div>
+
+            <div class="wind_alarm_zones_setting hidden" id='id_Alarm_Zone_Setting_Wind' style="width:300px">
+                <table class="alarm_zones_setting_tabl">
+                    <tr><td><h3>NAME:</h3></td><td><input type='text' id='id_Alarm_Zone_Name' value = '' /></td></tr>
+                    <tr><td><h3>COLOR:</h3></td><td><input type="color"  value="#000000" id='id_Alarm_Zone_Color' onchange='ChangeAlarmZoneColor()' /></td></tr>
+                    <tr><td><h3>ALARM:</h3></td><td>
+                        <select id="id_Alarm_Type_Select" >
+                            <option value="0" selected="selected">INSIDE</option>
+                            <option value="1">OUT</option>
+                            <option value="2">IN</option>
+                        </select>
+                    </td></tr>
+                    <tr><td><h3>URL:</h3></td><td><form name='form' onsubmit='return validate_url()' action="" ><input type='text' name='http'  id="id_Alarm_URL"><span style='color:red' id='httpf'></span><input type='submit' value='send'  style="display:none" ></form></td></tr>
+                </table>
+            </div>
+
+                <!--http:// <input type='text' name='http'> <br />-->
+            <div id = "id_Alarm_Text"></div>
+            <!--<input type="text" id = "id_Alarm_Text" />-->
+                <!-- ############################################################################################## -->
+            <td style="display: inline-block;">
+                <!-- ############################################################################################## -->
+            <div class="wind_alarm_zones" style="width:220px">
+                <table class="radar_tabl">
+                    <tr><td>Installation Height  </td><td><input type="number"  step="0.1" id = "Radar_Height" class = "radar_inpt" value = "360.0" /></td></tr>
+                    <tr><td>Installation Offset X</td><td><input type="number"  step="0.1" id = "Radar_Offset_X" class = "radar_inpt" value = "0.0" /></td></tr>
+                    <tr><td>Installation Offset Y</td><td><input type="number"  step="0.1" id = "Radar_Offset_Y" class = "radar_inpt" value = "0.0" /></td></tr>
+                    <tr><td>Radar Azimuth Angle  </td><td><input type="number"  step="0.1" id = "Radar_Azimuth_Angle" class = "radar_inpt" value = "60.0" /></td></tr>
+                    <tr><td>Radar Elevation Angle</td><td><input type="number"  step="0.1" id = "Radar_Elevation_Angle" class = "radar_inpt" value = "00.0" /></td></tr>
+                </table>
+                <input type = "button" id = "id_Create_Radar" name = "creat_radar" value = "Save Radar"  class="button" style="width: 40%" />
+                <input type = "button" id = "id_Clear_Object_Database" value = "Clear"  class="button" style="width: 200px" />
+            </div>
+            <!-- ############################################################################################## -->
+        <tr><td  colspan="2">
+        <div class="wind_object_list2">
+            <table  style="width:1290px; margin:0" class="sortable">
+                <!-- Заголовки //-->
+                <thead>
+                <tr>
+                    <td style="width:23px;"></td>
+                    <td class="width_cell"><h3>Object ID</h3></td>
+                    <td class="width_cell"><h3>Quality</h3></td>
+                    <td class="width_cell"><h3>Distance X(m)</h3></td>
+                    <td class="width_cell"><h3>Distance Y(m)</h3></td>
+                    <td class="width_cell"><h3>Velocity X(km/h)</h3></td>
+                    <td class="width_cell"><h3>Velocity Y(km/h)</h3></td>
+                    <td class="width_cell"><h3>Object Type</h3></td>
+                    <td class="width_cell"><h3>Distance Polar(m)</h3></td>
+                    <td class="width_cell"><h3>Speed Polar(km/h)</h3></td>
+                    <td class="width_cell"><h3>Angle()</h3></td>
+                </tr>
+                </thead>
+            </table>
+        </div>
+            <div class="wind_object_list">
+                    <table  style="width:1290px" class="sortable">
+                        <thead>
+                        <tr>
+                            <td style="width:30px;"><h3></h3></td>
+                            <td><h3>Object ID</h3></td>
+                            <td><h3>Quality</h3></td>
+                            <td><h3>Distance X(m)</h3></td>
+                            <td><h3>Distance Y(m)</h3></td>
+                            <td><h3>Velocity X(km/h)</h3></td>
+                            <td><h3>Velocity Y(km/h)</h3></td>
+                            <td><h3>Object Type</h3></td>
+                            <td><h3>Distance Polar(m)</h3></td>
+                            <td><h3>Speed Polar(km/h)</h3></td>
+                            <td><h3>Angle()</h3></td>
+                        </tr>
+                        </thead>
+                        <!-- Сюда будем добавлять строки //-->
+                        <tbody id="id_Table_Object_Tbody"></tbody>
+                    </table>
+            </div>
+        <!-- ############################################################################################## -->
+        <tr><td>
+        <div style="width:1290px">
+                <table  id="id_Alarm_List_Table" class="sortable" style="width:1290px;float:left;" >
+                    <thead>
+                    <tr>
+                        <td><h3>Alarm Zone</h3></td>
+                        <td><h3>Time</h3></td>
+                        <td><h3>Object Type</h3></td>
+                        <td><h3>Object Id</h3></td>
+                        <td><h3>Distance X</h3></td>
+                        <td><h3>Distance Y</h3></td>
+                        <td class="nosort"><h3>         </h3></td>
+
+                    </tr>
+                    </thead>
+                    <!-- Сюда будем добавлять строки //-->
+                    <tbody id="id_Alarm_List_Tbody"></tbody>
+                </table>
+
+                <div id="controls">
+                    <div id="perpage">
+                        <select id="id_Sorter_Size_Select" onchange="sorter.size(this.value)">
+                            <option value="5" selected="selected">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span>Entries Per Page</span>
+                    </div>
+                    <div id="navigation">
+                        <img src="img/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+                        <img src="img/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+                        <img src="img/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+                        <img src="img/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                    </div>
+                    <div id="text">Displaying Page <span id="currentpage"></span> of <span id="pagelimit"></span></div>
+                    <input type = "button" id = "id_Clear_Alarm_History" value = "Clear"  class="button" style="width: 200px" />
+                    <a href="alarm_history.html" target="_blank"><input type = "button" value = "Alarm History"  class="button" style="width: 200px" /></a>
+                    <input style="display:none" type = "button" id = "id_Sort_Alarm_History" value = "Sort"  class="button" style="width: 200px" />
+                </div>
+        </div>
+
+    </table>
+    <!-- Кол-во элементов option и их значения value можно задать произвольно //-->
+    <select id="rows_setup" style="display:none" ><option selected value="4">4</option></select>
+
+
+    <!-- ############################################################################################## -->
+    <div>
+        <label style="display:none"> X:  </label> <input style="display: none" type="text" id = "Obj_Distance_X" name = "object_x" value = "100" />
+        <label style="display:none"> Y:  </label><input style="display: none" type="text" id = "Obj_Distance_Y" name = "object_y" value = "100" />
+        <label style="display:none"> DATA:  </label><input type="text" id = "Obj_Data" name = "object_data" value = ""  style="display:none" />
+        <input style="display:none" type = "button" id = "Obj_Paint" name = "object_paint" value = "Obj Paint" onclick="Paint_Resive_Obj()"/>
+
+        <label id = "Obj_Alarm"></label>
+        <label id = "Obj_Pars_Data" style="display:none" ></label>
+        <!--<input type="color"  value="#ff0000" />-->
+    </div>
+
+
+    <script>
+        var req=new XMLHttpRequest();
+        var ind_txt=(-1);
+        var text_json_Test_Old;
+        function INDEX_handleServerResponse(){
+            var ingd_txt=req.responseText.indexOf('{"objects":');
+            if(ingd_txt!=-1) {
+                ind_txt=ingd_txt;
+                text_json_Test=req.responseText;
+            }
+        }
+
+        function INDEX_askServer(){
+            req.open('GET','//caloric2.prometrix.se/radar/radar.php', true); ///radar/radar.php
+            //req.withCredentials = true;
+            req.onreadystatechange = INDEX_handleServerResponse; // Подключаем функцию для обработки данных
+            req.send();
+            if(ind_txt!=-1) {
+                if(text_json_Test!=text_json_Test_Old){Paint_Resive_Obj();}text_json_Test=text_json_Test_Old;
+            }
+            window.setTimeout(INDEX_askServer,300);
+        }
+
+
+    </script>
+
+<script>INDEX_askServer();</script>
+    </body>
+
+
+</html>
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alarm History</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <!-- ############################################################################################## -->
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="js_alr_histr/alarm_list_history.js"></script>
+    <script type="text/javascript" src="js_alr_histr/database.js"></script>
+</head>
+<body>
+
+
+<div>
+    <table  id="id_Alarm_List_Table" class="sortable" style="width:1290px;float:left;" >
+        <thead>
+        <tr>
+            <td><h3>Alarm Zone</h3></td>
+            <td><h3>Time</h3></td>
+            <td><h3>Object Type</h3></td>
+            <td><h3>Object Id</h3></td>
+            <td><h3>Distance X</h3></td>
+            <td><h3>Distance Y</h3></td>
+            <td class="nosort"><h3>         </h3></td>
+
+        </tr>
+        </thead>
+        <!-- Сюда будем добавлять строки //-->
+        <tbody id="id_Alarm_List_Tbody"></tbody>
+    </table>
+
+    <div id="controls">
+        <div id="perpage">
+            <select id="id_Sorter_Size_Select" onchange="sorter.size(this.value)">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20" selected="selected">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <span>Entries Per Page</span>
+        </div>
+        <div id="navigation">
+            <img src="img/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+            <img src="img/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+            <img src="img/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+            <img src="img/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+        </div>
+        <div id="text">Displaying Page <span id="currentpage"></span> of <span id="pagelimit"></span></div>
+        <input type = "button" id = "id_Clear_Alarm_History" value = "Clear"  class="button" style="width: 200px" />
+        <input type = "button" id = "id_Update_Alarm_History" value = "Update"  class="button" style="width: 200px" />
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>

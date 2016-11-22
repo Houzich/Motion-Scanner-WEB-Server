@@ -1,0 +1,517 @@
+
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	background-color: #84acbc;
+	padding:20px;
+	font:15px Calibri,Arial,sans-serif;
+}
+
+table {
+	width: 100%; /* Ширина таблицы */
+}
+
+
+.button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #79bbff), color-stop(1, #378de5) );
+   /* background:-moz-linear-gradient( center top, #79bbff 5%, #378de5 100% );*/
+    /* filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#378de5');*/
+      background-color:#79bbff;
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      border-radius:6px;
+      border:1px solid #84bbf3;
+      /*display:inline-block;*/
+    color:#ffffff;
+    font-family:arial;
+    font-size:13px;
+    font-weight:bold;
+    padding:4px 12px;
+    text-decoration:none;
+    text-shadow:1px 1px 0px #528ecc;
+    margin-top: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}.button:hover {
+     background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #378de5), color-stop(1, #79bbff) );
+     /*background:-moz-linear-gradient( center top, #378de5 5%, #79bbff 100% );*/
+     /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#378de5', endColorstr='#79bbff');*/
+     background-color:#378de5;
+ }.button:active {
+      position:relative;
+      top:1px;
+  }.button:disabled {
+          -moz-box-shadow:inset 0px 0px 0px 0px #bbdaf7;
+          -webkit-box-shadow:inset 0px 0px 0px 0px #bbdaf7;
+          box-shadow:inset 0px 0px 0px 0px #bbdaf7;
+          background-color:black;
+          border:1px solid rgba(5, 2, 5, 0.99);
+          background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #12304e), color-stop(1, #2a3b51) );
+          color: #616296;
+          text-shadow:1px 1px 0px #050205;
+   }
+
+
+td {
+	padding: 5px; /* Поля в ячейках */
+	vertical-align: top; /* Выравнивание по верхнему краю ячеек */
+}
+
+table, td, th { border: 1px solid gray }
+
+
+.canv_tabl{
+    padding: 0px; /* Поля в ячейках */
+    vertical-align: top; /* Выравнивание по верхнему краю ячеек */
+    border:none;
+}
+.canv_tabl td{
+    padding: 0px; /* Поля в ячейках */
+    vertical-align: bottom; /* Выравнивание по верхнему краю ячеек */
+}
+
+.radar_tabl{
+    padding: 0px; /* Поля в ячейках */
+    padding-bottom: 5px; /* Поля в ячейках */
+}
+.radar_tabl td{
+    padding: 0px; /* Поля в ячейках */
+    padding-bottom: 5px; /* Поля в ячейках */
+}
+
+
+.bottom {
+    vertical-align: bottom;
+}
+
+.tblWind{
+	border:none;
+}
+
+.tblWind td{
+	border:none;
+}
+
+.tzSelect{
+	/* Контейнер для нового элемента select */
+	min-width:230px;
+	/* Предварительная загрузка фонового изображения для выпадающих пунктов */
+}
+
+
+
+.tzSelect .selectBox{
+    height:24px;
+    cursor:pointer;
+    background:#4f5abc;
+
+
+    text-align:center;
+    text-shadow:1px 1px 0 #EEEEEE;
+    color:#666666;
+
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+}
+
+.tzSelect .selectBox:hover,
+.tzSelect .selectBox.expanded{
+    color: #671318;
+}
+
+.tzSelect .dropDown{
+    width:100%;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+
+    border:1px solid #32333b;
+
+
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+
+
+}
+
+
+.tzSelect li{
+	height:32px;
+	cursor:pointer;
+    /*background:#4f5abc;*/
+    font-size:18px;
+    border:1px solid #32333b;
+
+
+}
+
+.tzSelect li:hover{
+	background: #45bc9b;
+}
+
+.unselected_zone{
+    background:#4f5abc;
+}
+
+.selected_zone{
+    background: #671318;
+}
+
+.clr_alarm_zone{
+    width:30px;
+    height:32px;
+    display: inline-block;
+    margin-left:5px;
+    vertical-align: middle;
+}
+
+.tzSelect li span{
+    margin-left:5px;
+    vertical-align: middle;
+
+}
+
+.tzSelect li i{
+    color: #fbffff;
+    font-size:22px;
+}
+
+.tzSelect li div{
+    /*margin-left:5px;*/
+    /*padding: 1% 0;*/
+}
+
+.tzSelect li input[type="text"]{
+    width:80px;
+    color:#999999;
+    font-size:14px;
+    margin-left:5px;
+}
+
+.tzSelect li input[type="text"]:focus {
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+/* Стили страницы */
+
+#footer{
+	background-color:#212121;
+	position:fixed;
+	width:100%;
+	height:70px;
+	bottom:0;
+	left:0;
+}
+
+.tri{
+	border-color:transparent transparent #212121;
+	border-style:solid;
+	border-width:20px 17px;
+	height:0;
+	left:50%;
+	margin:-40px 0 0 -400px;
+	position:absolute;
+	top:0;
+	width:0;
+}
+
+#footer h1{
+	font-size:20px;
+	font-weight:normal;
+	left:50%;
+	margin-left:-400px;
+	padding:25px 0;
+	position:absolute;
+	width:600px;
+}
+
+a, a:visited {
+	text-decoration:none;
+	outline:none;
+	border-bottom:1px dotted #97cae6;
+	color:#97cae6;
+}
+
+a:hover{
+	border-bottom:1px dashed transparent;
+}
+
+.clear{
+	clear:both;
+}
+
+.radar_inpt{
+	width: 55px;
+}
+.obj_list_inpt{
+	width: 100%;
+	border:none;
+	font:15px Calibri,Arial,sans-serif;
+	font-weight:bold;
+	background: #84acbc;
+	text-align: center;
+}
+
+.wind_object_list{
+	background: #84acbc;
+	border:1px solid #32333b;
+	height:100px;
+	overflow-y: scroll;
+    z-index: 13;
+    display:inline-block;
+}
+.wind_object_list2{
+    background: #84acbc;
+    border:1px solid #32333b;
+    z-index: 113;
+    position: absolute;
+}
+
+
+.wind_alarm_zones{
+    background: #84acbc;
+    border:1px solid #32333b;
+	height:240px;
+}
+
+
+.wind_alarm_zones_setting{
+    margin-top:10px;
+    background: #84acbc;
+    border:1px solid #32333b;
+}
+
+
+
+#Paint_second {
+	visibility:hidden;
+	position: absolute;
+
+}
+
+canvas {
+	border:1px solid red;
+}
+
+
+.canv_grid {
+	border-style:none;
+}
+
+#Select_Alarm_Zones{width: 60px;}
+
+
+
+#Obj_Distance_X,#Obj_Distance_Y{
+    width: 60px;
+    font-size: 30px;
+    color: #868686;
+    text-transform: uppercase; }
+
+#Obj_Data{
+    width: 260px;
+    height: 160px;
+    font-size: 20px;
+    color: #868686;
+    text-transform: uppercase; }
+#Obj_Alarm{
+    width: 40px;
+    font-size: 40px;
+    color: red;
+    text-transform: uppercase; }
+#Obj_Pars_Data{
+    width: 200px;
+    font-size: 30px;
+    color: red;
+    text-transform: uppercase; }
+
+#Box_Alarm_Zones_Div{
+    height:150px; /* высота нашего блока */
+	background: darkslateblue; /* цвет фона, белый */
+	overflow-y: scroll; /* прокрутка по вертикали */}
+
+#Title_Alarm_Zones_Div {
+	cursor:pointer;
+	background: #84acbc;
+	font-size:18px;
+}
+
+#id_Alarm_Text{
+    width: 290px;
+    color: #671318;
+    z-index: 99;
+    font-weight:bold;
+}
+
+
+.image_drop{
+    margin-top:5px;
+    margin-left:45px;
+	position: absolute;
+	z-index: 101;
+	float:right;
+}
+
+
+.scale_drop{
+    margin-top:5px;
+    margin-left:308px;
+    float:right;
+    position: absolute;
+    z-index: 102;
+    display:inline-block;
+}
+
+.wind_wait_url{
+    /*width: 290px;*/
+    font-size:25px;
+    color: red;
+    background: #45bc9b;
+    /*visibility:hidden;*/
+    position: absolute;
+    z-index: 80;
+    display:inline-block;
+}
+.hidden {
+    visibility:hidden;
+}
+
+.disp_none {
+    display:none;
+}
+
+.scale_cell{
+    height:100%;
+    width: 126px;
+    border:1px solid #32333b;
+    font-weight:bold;
+}
+
+.scale_tabl{
+    border:none;
+    padding: 0px; /* Поля в ячейках */
+    text-align:center;
+/*    border: 1px solid gray;*/
+    vertical-align: top;
+    display:inline-block;
+}
+.scale_tabl td {
+    padding: 0px; /* Поля в ячейках */
+    text-align:center;
+   /* border: 1px solid gray;*/
+    vertical-align: top;}
+
+#id_Scale_Distance_Inpt{
+    width:65px;
+    font-weight:bold;
+    background: white;
+    text-align: center;
+}
+
+.file_upload{
+    position: relative;
+   /* overflow: hidden;*/ /*выдает ошибку скрола*/
+    font-size: 1em;        /* example */
+    height: 2em;           /* example */
+    line-height: 2em;       /* the same as height */
+    cursor:pointer;
+    float: bottom;
+}
+
+.file_upload > button{
+    cursor:pointer;
+    width: 15em;            /* example */
+    height: 25px
+}
+.file_upload > div{
+   /* padding-left: 1em;      !* example *!*/
+    cursor: pointer;
+}
+
+.file_upload input[type=file]{
+    border:1px solid #32333b;
+    position: absolute;
+    left: 3px;
+    top: 0;
+    height:25px;
+    width: 14em;
+/*    transform: scale(20);
+    !*letter-spacing: 10em;*!     !* IE 9 fix *!
+    -ms-transform: scale(20); !* IE 9 fix *!*/
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+.width_cell{
+    width:100px;
+}
+
+.highlight{
+    background: red;
+}
+/*********************Table********************************/
+/*.sortable {border-left:1px solid #c6d5e1; border-top:1px solid #c6d5e1; border-bottom:none; margin:0 auto 15px; border-spacing:0;}
+.sortable th {background:url(../img/header-bg.gif); text-align:left; color:#cfdce7; border:1px solid #fff; border-right:none}
+.sortable th h3 {font-size:10px; padding:6px 8px 8px}
+.sortable td {padding:4px 6px 6px; border-bottom:1px solid #c6d5e1; border-right:1px solid #c6d5e1}
+.sortable a {cursor: pointer}
+.sortable .head h3 {background:url(../img/sort.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .desc, .sortable .asc {background:url(../img/header-selected-bg.gif)}
+.sortable .desc h3 {background:url(../img/desc.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .asc h3 {background:url(../img/asc.gif) 7px  center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .head:hover, .sortable .desc:hover, .sortable .asc:hover {color:#fff}
+.sortable .evenrow td {background:#fff}
+.sortable .oddrow td {background:#ecf2f6}
+.sortable td.evenselected {background:#ecf2f6}
+.sortable td.oddselected {background:#dce6ee}
+
+#controls {width:980px; margin:0 auto; height:20px}
+#perpage {float:left; width:200px}
+#perpage select {float:left; font-size:11px}
+#perpage span {float:left; margin:2px 0 0 5px}
+#navigation {float:left; width:580px; text-align:center}
+#navigation img {cursor:pointer}
+#text {float:left; width:200px; text-align:right; margin-top:2px}*/
+
+
+.sortable {border-left:1px solid #c6d5e1; border-top:1px solid #c6d5e1; border-bottom:none; margin:0 auto 15px; border-spacing:0;}
+.sortable thead td {background:url(../img/header-bg.gif); text-align:left; color:#cfdce7; border:1px solid #fff; border-right:none; padding: 0px;}
+.sortable thead td h3 {font-size:10px; padding:6px 8px 8px}
+.sortable tbody td {padding:4px 6px 6px; border-bottom:1px solid #c6d5e1; border-right:1px solid #c6d5e1}
+.sortable a {cursor: pointer}
+.sortable thead .head h3 {background:url(../img/sort.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable thead .desc, .sortable .asc {background:url(../img/header-selected-bg.gif)}
+.sortable thead .desc h3 {background:url(../img/desc.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable thead .asc h3 {background:url(../img/asc.gif) 7px  center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .head:hover, .sortable .desc:hover, .sortable .asc:hover {color:#fff}
+.sortable tbody .evenrow td {background:#fff}
+.sortable tbody .oddrow td {background:#ecf2f6}
+.sortable tbody td.evenselected {background:#ecf2f6}
+.sortable tbody td.oddselected {background:#dce6ee}
+
+#controls {width:980px; margin:0 auto; height:20px}
+#perpage {float:left; width:200px}
+#perpage select {float:left; font-size:11px}
+#perpage span {float:left; margin:2px 0 0 5px}
+#navigation {float:left; width:580px; text-align:center}
+#navigation img {cursor:pointer}
+#text {float:left; width:200px; text-align:right; margin-top:2px}
+
+
+
+.alarm_zones_setting_tabl td {font-size:15px; padding:0; text-align:left; vertical-align: middle;}
+.alarm_zones_setting_tabl td h3 {font-size:16px; color:#c6d5e1; padding:0; text-align:right; margin-right:4px;}
+.alarm_zones_setting_tabl td input {width:80%; border:0;}
+.alarm_zones_setting_tabl td select {width:80%; border:0;}
+
