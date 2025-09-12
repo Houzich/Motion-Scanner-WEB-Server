@@ -180,3 +180,4 @@ prototypefabric.polygon = {
 };
 
 
+

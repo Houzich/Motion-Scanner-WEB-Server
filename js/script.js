@@ -712,3 +712,4 @@ function Resize_Canvas() {
     canvas.renderAll();
 
 }
+

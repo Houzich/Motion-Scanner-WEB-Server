@@ -118,3 +118,4 @@ function DelRowAlarmHistory(x,id) {
 function Show_Tabl_Alarm_History(fl_highlight,tbl_arr) {
     alarm_history_tbl.add_row_arr(fl_highlight,tbl_arr);
 }
+
